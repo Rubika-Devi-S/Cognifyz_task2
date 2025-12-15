@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cognifyz_task2</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sanserif;
+      background: linear-gradient(120deg, #eef2ff, #e0e7ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    ">
+    <form
+      action="/submit"
+      method="POST"
+      onsubmit="return validateForm()"
+      style="
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        width: 500px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+      "
+      onmouseover="this.style.transform='scale(1.02)'"
+      onmouseout="this.style.transform='scale(1.0)'">
+      <h1 style="text-align: center; margin-bottom: 20px; color: lightseagreen">
+        Cognifyz_Task2
+      </h1>
+      <h2 style="text-align: center; margin-bottom: 20px">Registration Form</h2>
+      <!--NAME-->
+      <label for="name" id="name">Name: <br /></label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        style="
+          width: 90%;
+          padding: 10px;
+          margin-bottom: 15px;
+          border-radius: 5px;
+          border: 1px solid #180909;
+          transition: border 0.3s ease, box-shadow 0.3s ease;
+        "
+        onfocus="this.style.border='1px solid #4f46e5'" />
+      <br /><br />
+      <!--EMAIL-->
+      <label for="email" id="email">Email: <br /></label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        style="
+          width: 90%;
+          padding: 10px;
+          margin-bottom: 15px;
+          border-radius: 5px;
+          border: 1px solid #180909;
+          transition: border 0.3s ease, box-shadow 0.3s ease;
+        "
+        onfocus="this.style.border='1px solid #4338ca'" />
+      <br /><br />
+      <label for="password" id="password">Password: <br /></label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        style="
+          width: 90%;
+          padding: 10px;
+          margin-bottom: 15px;
+          border-radius: 5px;
+          border: 1px solid #180909;
+          transition: border 0.3s ease, box-shadow 0.3s ease;
+        "
+        onfocus="this.style.border='1px solid #4338ca'"
+        onblur="this.style.border='1px solid #ccc'; 
+        this.style.boxShadow='none'" />
+      <br /><br />
+      <input
+        type="submit"
+        value="Register"
+        style="
+          width: 50%;
+          margin-left: 20%;
+          padding: 10px;
+          background-color: lightseagreen;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+        " />
+    </form>
+    <script>
+      function validateForm() {
+        let name = document.getElementById("nameInput").value.trim();
+        let email = document.getElementById("emailInput").value.trim();
+        let password = document.getElementById("passwordInput").value;
+
+        // Name validation
+        if (name === "" || name.length < 3) {
+          alert("Name must be at least 3 characters long.");
+          return false;
+        }
+
+        // Email validation (regex)
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          alert("Please enter a valid email address.");
+          return false;
+        }
+
+        // Password validation rules
+        // Minimum 8 characters
+        // At least 1 uppercase, 1 lowercase, 1 number, 1 special character
+        let passwordPattern =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        if (!passwordPattern.test(password)) {
+          alert(
+            "Password must contain:\n- At least 8 characters\n- 1 uppercase letter\n- 1 lowercase letter\n- 1 number\n- 1 special character"
+          );
+          return false;
+        }
+
+        return true; // All validations passed
+      }
+    </script>
+  </body>
+</html>
